@@ -3,6 +3,8 @@
 /* ******************************** */
 import React, { Component } from 'react';
 import UserInputContainer from './UserInputContainer';
+import LetterResults from './LetterResults';
+import computeLetters from '../api';
 
 /* ******************************** */
 /* *********** PRIVATE ************ */
@@ -21,16 +23,25 @@ type State = {
 class ConverterContainer extends Component<Props, State> {
   state = {
     userInput: '',
-    // results: [],
+    results: [],
   };
 
-  setUserInput = (userInput: string) => this.setState({ userInput });
+  setUserInput = (userInput: string) => {
+    console.log(userInput)
+    this.setState({ userInput });
+  }
+
+  getResults = () => {
+    const { userInput } = this.state;
+    computeLetters(userInput).then(results => this.setState({ results }));
+  };
 
   render() {
-    const { userInput } = this.state;
+    const { userInput, results } = this.state;
     return (
       <div>
-        <UserInputContainer input={userInput} setUserInput={this.setUserInput} />
+        <UserInputContainer input={userInput} setUserInput={this.setUserInput} getResults={this.getResults} />
+        <LetterResults results={results} />
       </div>
     );
   }

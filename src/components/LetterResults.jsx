@@ -10,22 +10,15 @@ import React from 'react';
 /* ******************************** */
 /* ********** COMPONENT *********** */
 /* ******************************** */
-type Props = {
-  userInput: string,
-  setUserInput: (str: string) => void,
-  getResults: () => void,
-};
+type Props = { results: Array<string> };
 
-const UserInputContainer = ({ userInput, setUserInput, getResults }: Props) => (
+const LetterResults = ({ results }: Props) => (
   <div>
-    <input type="text" placeholder="Please enter number" value={userInput} onChange={e => setUserInput(e.target.value)} />
-    <button type="button" onClick={getResults}>
-      SUBMIT
-    </button>
+    <textarea rows="10" disabled value={results} />
   </div>
 );
 
 /* ******************************** */
 /* *********** EXPORTS ************ */
 /* ******************************** */
-export default UserInputContainer;
+export default LetterResults;
