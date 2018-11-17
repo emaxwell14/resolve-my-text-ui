@@ -1,0 +1,26 @@
+{
+  "name": "resolve-my-text-ui",
+  "version": "1.0.0",
+  "description": "T9 text predictor. UI that accepts number string and sends to API for computing all possible strings ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emaxwell14/resolve-my-text-ui.git"
+  },
+  "author": "Eoghan Maxwell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emaxwell14/resolve-my-text-ui/issues"
+  },
+  "homepage": "https://github.com/emaxwell14/resolve-my-text-ui#readme",
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1"
+  }
+}
