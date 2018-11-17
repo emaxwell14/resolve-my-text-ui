@@ -17,7 +17,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['js', 'jsx'],
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new HtmlWebPackPlugin({
@@ -25,6 +25,10 @@ module.exports = {
       chunks: ['app'],
     }),
   ],
+  devServer: {
+    contentBase: './dist',
+    hot: true,
+  },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
