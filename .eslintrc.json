@@ -3,6 +3,10 @@
         "airbnb",
         "prettier"
     ],
+    "parser": "babel-eslint",
+    "env": {
+        "browser": true
+    },
     "plugins": [
         "prettier"
     ],
