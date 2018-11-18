@@ -5,11 +5,11 @@
 /* ******************************** */
 /* *********** PRIVATE ************ */
 /* ******************************** */
-const MAX_STRING_LENGTH = 9;
+const MAX_STRING_LENGTH = 10;
 const NUMBER_REGEX = '^[234567890]+$';
 
-const INVALID_FORMAT_MSG = 'Invalid format. Use the active numbers on the keypad.';
-const MAX_LENGTH_EXCEEDED_MSG = `For performance reasons cannot exceed max length of ${MAX_STRING_LENGTH}.`;
+const INVALID_FORMAT_ERROR = 'Invalid format: Use the active numbers on the keypad only.';
+const PERFORMANCE_WARNING = 'Warning: Large numbers may take a long time to process.';
 
 const isFormatValid = (numberString: string) => new RegExp(NUMBER_REGEX).test(numberString);
 const exceedsMaxLength = (numberString: string) => numberString.length > MAX_STRING_LENGTH;
@@ -22,19 +22,19 @@ const exceedsMaxLength = (numberString: string) => numberString.length > MAX_STR
  * Validate the input string.
  *  - If empty or undefined, no error. (As submit is disabled and dont want to show error)
  *  - If invalid format, returning error
- *  - Also checking length. API cannot currently handle large calculations and frontend is
- *    slow when displaying a large list.
+ *  - Also checking length and setting warning if very long
  */
 function isValidNumber(number?: string) {
+  const validation = {};
   if (number) {
     if (!isFormatValid(number)) {
-      return INVALID_FORMAT_MSG;
+      validation.error = INVALID_FORMAT_ERROR;
     }
     if (exceedsMaxLength(number)) {
-      return MAX_LENGTH_EXCEEDED_MSG;
+      validation.warning = PERFORMANCE_WARNING;
     }
   }
-  return undefined;
+  return validation;
 }
 
 /* ******************************** */

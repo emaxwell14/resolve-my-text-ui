@@ -26,7 +26,7 @@ class ConverterProvider extends Component<Props, {}> {
     super(props);
     this.state = {
       userInput: '',
-      userInputError: undefined,
+      userInputValidation: {},
       results: [],
       resultsPending: false,
       queryResults: this.queryResults,
@@ -41,8 +41,8 @@ class ConverterProvider extends Component<Props, {}> {
    * Client side validation handled here.
    */
   setUserInput = (userInput: string) => {
-    const userInputError = isValidNumber(userInput);
-    this.setState({ userInput, userInputError });
+    const userInputValidation = isValidNumber(userInput);
+    this.setState({ userInput, userInputValidation });
   };
 
   /**
@@ -52,8 +52,8 @@ class ConverterProvider extends Component<Props, {}> {
   addKeyToUserInput = (pressedKey: string) => {
     const { userInput } = this.state;
     const updatedInput = userInput.concat(pressedKey);
-    const userInputError = isValidNumber(userInput);
-    this.setState({ userInput: updatedInput, userInputError });
+    const userInputValidation = isValidNumber(updatedInput);
+    this.setState({ userInput: updatedInput, userInputValidation });
   };
 
   /**

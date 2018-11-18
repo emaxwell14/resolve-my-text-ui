@@ -12,7 +12,7 @@ import React from 'react';
 /* ******************************** */
 const ConverterContext = React.createContext({
   userInput: '',
-  userInputError: undefined,
+  userInputValidation: {},
   results: [],
   resultsPending: false,
   queryResults: () => {},

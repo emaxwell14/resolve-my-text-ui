@@ -19,23 +19,23 @@ import styles from './styles.scss';
  */
 const UserInputContainer = () => (
   <ConverterContext.Consumer>
-    {({ userInput, setUserInput, queryResults, userInputError, resultsPending }) => (
+    {({ userInput, setUserInput, queryResults, userInputValidation, resultsPending }) => (
       <div className="d-flex flex-column align-items-center mb-3">
         <div className={classnames(['w-50 p-2', styles.borderShadow])}>
           <input
-            className={classnames(['form-control', { [styles.error]: userInputError }])}
+            className={classnames(['form-control', { [styles.error]: userInputValidation.error }])}
             type="text"
             placeholder="Please enter number"
             value={userInput}
             onChange={e => setUserInput(e.target.value)}
           />
-          {userInputError && <span>{userInputError}</span>}
+          {userInputValidation && <span>{userInputValidation.error || userInputValidation.warning}</span>}
           <PhoneKeys />
           <button
             className="btn btn-primary w-100"
             type="button"
             onClick={queryResults}
-            disabled={!userInput || userInputError || resultsPending}
+            disabled={!userInput || userInputValidation.error || resultsPending}
           >
             SUBMIT
           </button>
