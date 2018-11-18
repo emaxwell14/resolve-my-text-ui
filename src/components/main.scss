@@ -1,0 +1,7 @@
+$border-color: #000;
+$divider-color: #ced4da;
+
+.border-shadow {
+  box-shadow: 0 0 10px $border-color;
+  border-radius: .25rem;
+}

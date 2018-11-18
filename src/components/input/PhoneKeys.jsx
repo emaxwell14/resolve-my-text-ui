@@ -1,11 +1,11 @@
 /* ******************************** */
 /* *********** IMPORTS ************ */
 /* ******************************** */
-import React, { Fragment } from 'react';
+import React from 'react';
 import classnames from 'classnames';
-import keyData from '../keyData.json';
+import keyData from '../../keyData.json';
 import styles from './styles.scss';
-import ConverterContext from '../context/ConverterContext';
+import ConverterContext from '../../context/ConverterContext';
 
 /* ******************************** */
 /* *********** PRIVATE ************ */
@@ -43,7 +43,7 @@ type rowProps = {
 };
 
 const PhoneRow = ({ keys, isLast }: rowProps) => (
-  <div className={classnames([{ [styles.phoneRowLast]: isLast }, 'd-flex justify-content-between'])}>
+  <div className={classnames(['d-flex justify-content-between', { [styles.phoneRowLast]: isLast }])}>
     {keys.map(key => (
       <PhoneKey key={key.number} buttonKey={key} />
     ))}
