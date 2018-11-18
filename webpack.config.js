@@ -6,15 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   entry: {
     app: './src/index.jsx',
-    vendor: [
-      'react',
-      'react-dom',
-      'font-awesome/scss/font-awesome.scss',
-      'bootstrap/dist/css/bootstrap.css',
-      'bootstrap',
-      'jquery',
-      'popper.js',
-    ],
+    vendor: ['react', 'react-dom', 'bootstrap/dist/css/bootstrap.css', 'bootstrap', 'jquery', 'popper.js'],
   },
   module: {
     rules: [

@@ -5,3 +5,13 @@ $divider-color: #ced4da;
   box-shadow: 0 0 10px $border-color;
   border-radius: .25rem;
 }
+
+input.error, input.error:focus {
+  color: red;
+  border: 1px solid red;
+  box-shadow: 0 0 0 0.2rem rgba(red, 0.25);
+
+  & + span {
+    color: red;
+  }
+}

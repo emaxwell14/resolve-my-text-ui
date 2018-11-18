@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import ConverterContext from './ConverterContext';
 import computeLetters from '../api';
+import isValidNumber from '../utils/validationUtils';
 
 /* ******************************** */
 /* *********** PRIVATE ************ */
@@ -22,6 +23,7 @@ class ConverterProvider extends Component<Props, {}> {
     super(props);
     this.state = {
       userInput: '',
+      userInputError: undefined,
       results: [],
       queryResults: this.queryResults,
       setUserInput: this.setUserInput,
@@ -30,7 +32,8 @@ class ConverterProvider extends Component<Props, {}> {
   }
 
   setUserInput = (userInput: string) => {
-    this.setState({ userInput });
+    const userInputError = isValidNumber(userInput);
+    this.setState({ userInput, userInputError });
   };
 
   addKeyToUserInput = (pressedKey: string) => {

@@ -56,7 +56,7 @@
     },
     {
       "number": "0",
-      "disabled": true
+      "disabled": false
     },
     {
       "number": "#",
