@@ -30,6 +30,7 @@ class ConverterProvider extends Component<Props, {}> {
       results: [],
       resultsPending: false,
       queryResults: this.queryResults,
+      clearResults: this.clearResults,
       setUserInput: this.setUserInput,
       addKeyToUserInput: this.addKeyToUserInput,
     };
@@ -37,6 +38,7 @@ class ConverterProvider extends Component<Props, {}> {
 
   /**
    * Set user input. Client side validation handled here
+   * Client side validation handled here.
    */
   setUserInput = (userInput: string) => {
     const userInputError = isValidNumber(userInput);
@@ -44,12 +46,14 @@ class ConverterProvider extends Component<Props, {}> {
   };
 
   /**
-   * Add an individual key stroke to the input
+   * Add an individual key stroke to the input.
+   * Client side validation handled here.
    */
   addKeyToUserInput = (pressedKey: string) => {
     const { userInput } = this.state;
     const updatedInput = userInput.concat(pressedKey);
-    this.setState({ userInput: updatedInput });
+    const userInputError = isValidNumber(userInput);
+    this.setState({ userInput: updatedInput, userInputError });
   };
 
   /**
@@ -62,6 +66,11 @@ class ConverterProvider extends Component<Props, {}> {
       .catch(() => this.setState({ results: [], resultsPending: false }));
     this.setState({ results: [], resultsPending: true });
   };
+
+  /**
+   * Clear stored results
+   */
+  clearResults = () => this.setState({ results: [] });
 
   render() {
     const { children } = this.props;

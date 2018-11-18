@@ -1,17 +1,23 @@
 @import '../main';
 
 .results {
-  & > h4 {
+  .result-header {
     margin-bottom: 0;
-    border-bottom: 1px solid $divider-color;
   }
-  & > div {
-    max-height: 290px;
-    overflow-y: auto;
-  
-    .result {
-      flex: 0 0 20%;
-    }
+
+  .result {
+    flex: 0 0 20%;
+  }
+}
+
+.infinite-scroll {
+  max-height: 250px;
+  overflow-y: auto;
+  border-bottom: 1px solid $divider-color;
+  border-top: 1px solid $divider-color;
+
+  & + div {
+    font-size: 0.75rem;
   }
 }
 
