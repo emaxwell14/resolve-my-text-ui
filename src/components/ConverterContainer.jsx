@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import UserInputContainer from './UserInputContainer';
 import LetterResults from './LetterResults';
 import computeLetters from '../api';
+import styles from './styles.scss';
 
 /* ******************************** */
 /* *********** PRIVATE ************ */
@@ -27,9 +28,8 @@ class ConverterContainer extends Component<Props, State> {
   };
 
   setUserInput = (userInput: string) => {
-    console.log(userInput)
     this.setState({ userInput });
-  }
+  };
 
   getResults = () => {
     const { userInput } = this.state;
@@ -39,7 +39,7 @@ class ConverterContainer extends Component<Props, State> {
   render() {
     const { userInput, results } = this.state;
     return (
-      <div>
+      <div className={styles.container}>
         <UserInputContainer input={userInput} setUserInput={this.setUserInput} getResults={this.getResults} />
         <LetterResults results={results} />
       </div>

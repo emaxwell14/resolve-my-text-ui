@@ -22,7 +22,6 @@ const computeLetters = number =>
     .then(res => res.json())
     .then(json => json.data);
 
-
 /* ******************************** */
 /* *********** EXPORTS ************ */
 /* ******************************** */

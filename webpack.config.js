@@ -1,9 +1,20 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const autoprefixer = require('autoprefixer');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
     app: './src/index.jsx',
+    vendor: [
+      'react',
+      'react-dom',
+      'font-awesome/scss/font-awesome.scss',
+      'bootstrap/dist/css/bootstrap.css',
+      'bootstrap',
+      'jquery',
+      'popper.js',
+    ],
   },
   module: {
     rules: [
@@ -14,6 +25,71 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[local]',
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                autoprefixer({
+                  browsers: ['last 3 versions', 'ie > 8'],
+                }),
+              ],
+            },
+          },
+        ],
+      },
+      {
+        test: /\.s[ac]ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[folder]__[local]',
+              camelCase: true,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                autoprefixer({
+                  browsers: ['last 3 versions', 'ie > 8'],
+                }),
+              ],
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: 'true',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf|wav)(\?.*)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            query: {
+              limit: 10,
+              name: '[name].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
   resolve: {
@@ -22,8 +98,9 @@ module.exports = {
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html',
-      chunks: ['app'],
+      chunks: ['app', 'vendor'],
     }),
+    new MiniCssExtractPlugin({ filename: '[name].css', chunkFilename: '[id].css' }),
   ],
   devServer: {
     contentBase: './dist',
