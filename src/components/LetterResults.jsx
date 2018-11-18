@@ -14,7 +14,7 @@ type Props = { results: Array<string> };
 
 const LetterResults = ({ results }: Props) => (
   <div>
-    <textarea rows="10" disabled value={results} />
+    <textarea className="form-control" rows="10" disabled value={results} />
   </div>
 );
 

@@ -39,7 +39,7 @@ class ConverterContainer extends Component<Props, State> {
   render() {
     const { userInput, results } = this.state;
     return (
-      <div className={styles.container}>
+      <div className="container">
         <UserInputContainer input={userInput} setUserInput={this.setUserInput} getResults={this.getResults} />
         <LetterResults results={results} />
       </div>

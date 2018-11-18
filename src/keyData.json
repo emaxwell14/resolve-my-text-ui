@@ -1,0 +1,66 @@
+[
+  [
+    {
+      "number": "1",
+      "disabled": true
+    },
+    {
+      "number": "2",
+      "letters": "ABC",
+      "disabled": false
+    },
+    {
+      "number": "3",
+      "letters": "DEF",
+      "disabled": false
+    }
+  ],
+  [
+    {
+      "number": "4",
+      "letters": "GHI",
+      "disabled": false
+    },
+    {
+      "number": "5",
+      "letters": "JKL",
+      "disabled": false
+    },
+    {
+      "number": "6",
+      "letters": "MNO",
+      "disabled": false
+    }
+  ],
+  [
+    {
+      "number": "7",
+      "letters": "PQRS",
+      "disabled": false
+    },
+    {
+      "number": "8",
+      "letters": "TUV",
+      "disabled": false
+    },
+    {
+      "number": "9",
+      "letters": "WXYZ",
+      "disabled": false
+    }
+  ],
+  [
+    {
+      "number": "*",
+      "disabled": true
+    },
+    {
+      "number": "0",
+      "disabled": true
+    },
+    {
+      "number": "#",
+      "disabled": true
+    }
+  ]
+]
