@@ -4,6 +4,7 @@
 /* ******************************** */
 import React, { Component } from 'react';
 import ConverterContext from './ConverterContext';
+import computeLetters from '../api';
 
 /* ******************************** */
 /* *********** PRIVATE ************ */
@@ -22,7 +23,7 @@ class ConverterProvider extends Component<Props, {}> {
     this.state = {
       userInput: '',
       results: [],
-      setResults: this.setResults,
+      queryResults: this.queryResults,
       setUserInput: this.setUserInput,
       addKeyToUserInput: this.addKeyToUserInput,
     };
@@ -38,8 +39,9 @@ class ConverterProvider extends Component<Props, {}> {
     this.setState({ userInput: updatedInput });
   };
 
-  setResults = (results: Array<string>) => {
-    this.setState({ results });
+  queryResults = () => {
+    const { userInput } = this.state;
+    computeLetters(userInput).then(results => this.setState({ results }));
   };
 
   render() {

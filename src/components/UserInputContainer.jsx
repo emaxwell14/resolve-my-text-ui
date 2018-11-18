@@ -12,13 +12,9 @@ import ConverterContext from '../context/ConverterContext';
 /* ******************************** */
 /* ********** COMPONENT *********** */
 /* ******************************** */
-type Props = {
-  getResults: () => void,
-};
-
-const UserInputContainer = ({ getResults }: Props) => (
+const UserInputContainer = () => (
   <ConverterContext.Consumer>
-    {({ userInput, setUserInput }) => (
+    {({ userInput, setUserInput, queryResults }) => (
       <div className="d-flex flex-column align-items-center">
         <div className="w-50">
           <input
@@ -29,7 +25,7 @@ const UserInputContainer = ({ getResults }: Props) => (
             onChange={e => setUserInput(e.target.value)}
           />
           <PhoneKeys />
-          <button className="btn btn-primary w-100" type="button" onClick={getResults}>
+          <button className="btn btn-primary w-100" type="button" onClick={queryResults}>
             SUBMIT
           </button>
         </div>

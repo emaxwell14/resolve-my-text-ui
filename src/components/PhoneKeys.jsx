@@ -39,11 +39,11 @@ const PhoneKey = ({ buttonKey: { number, disabled, letters } }: keyProp) => (
 
 type rowProps = {
   keys: Array<Key>,
-  last: boolean,
+  isLast: boolean,
 };
 
-const PhoneRow = ({ keys, last }: rowProps) => (
-  <div className={classnames([{ [styles.phoneRowLast]: last }, 'd-flex justify-content-between'])}>
+const PhoneRow = ({ keys, isLast }: rowProps) => (
+  <div className={classnames([{ [styles.phoneRowLast]: isLast }, 'd-flex justify-content-between'])}>
     {keys.map(key => (
       <PhoneKey key={key.number} buttonKey={key} />
     ))}
@@ -53,16 +53,12 @@ const PhoneRow = ({ keys, last }: rowProps) => (
 /* ******************************** */
 /* ********** COMPONENT *********** */
 /* ******************************** */
-type Props = {
-  onButtonClick: string => void,
-};
-
-const PhoneKeys = ({  }: Props) => (
+const PhoneKeys = () => (
   <Fragment>
     <PhoneRow keys={keyData[0]} />
     <PhoneRow keys={keyData[1]} />
     <PhoneRow keys={keyData[2]} />
-    <PhoneRow keys={keyData[3]} last />
+    <PhoneRow keys={keyData[3]} isLast />
   </Fragment>
 );
 
