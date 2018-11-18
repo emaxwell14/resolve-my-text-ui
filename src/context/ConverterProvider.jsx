@@ -25,6 +25,7 @@ class ConverterProvider extends Component<Props, {}> {
       userInput: '',
       userInputError: undefined,
       results: [],
+      resultsPending: false,
       queryResults: this.queryResults,
       setUserInput: this.setUserInput,
       addKeyToUserInput: this.addKeyToUserInput,
@@ -45,8 +46,9 @@ class ConverterProvider extends Component<Props, {}> {
   queryResults = () => {
     const { userInput } = this.state;
     computeLetters(userInput)
-      .then(results => this.setState({ results }))
-      .catch(() => this.setState({ results: [] }));
+      .then(results => this.setState({ results, resultsPending: false }))
+      .catch(() => this.setState({ results: [], resultsPending: false }));
+    this.setState({ results: [], resultsPending: true });
   };
 
   render() {

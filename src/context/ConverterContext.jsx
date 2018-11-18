@@ -14,6 +14,7 @@ const ConverterContext = React.createContext({
   userInput: '',
   userInputError: undefined,
   results: [],
+  resultsPending: false,
   queryResults: () => {},
   setUserInput: () => {},
   addKeyToUserInput: () => {},

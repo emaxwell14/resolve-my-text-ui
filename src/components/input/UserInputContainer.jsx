@@ -16,7 +16,7 @@ import styles from './styles.scss';
 /* ******************************** */
 const UserInputContainer = () => (
   <ConverterContext.Consumer>
-    {({ userInput, setUserInput, queryResults, userInputError }) => (
+    {({ userInput, setUserInput, queryResults, userInputError, resultsPending }) => (
       <div className="d-flex flex-column align-items-center mb-3">
         <div className={classnames(['w-50 p-2', styles.borderShadow])}>
           <input
@@ -32,7 +32,7 @@ const UserInputContainer = () => (
             className="btn btn-primary w-100"
             type="button"
             onClick={queryResults}
-            disabled={!userInput || userInputError}
+            disabled={!userInput || userInputError || resultsPending}
           >
             SUBMIT
           </button>
