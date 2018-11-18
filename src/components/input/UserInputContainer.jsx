@@ -14,6 +14,9 @@ import styles from './styles.scss';
 /* ******************************** */
 /* ********** COMPONENT *********** */
 /* ******************************** */
+/**
+ * Holder for the text field, phone keys and submit button
+ */
 const UserInputContainer = () => (
   <ConverterContext.Consumer>
     {({ userInput, setUserInput, queryResults, userInputError, resultsPending }) => (

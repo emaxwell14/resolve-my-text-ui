@@ -21,6 +21,9 @@ type keyProp = {
   buttonKey: Key,
 };
 
+/**
+ * Individual phone key
+ */
 const PhoneKey = ({ buttonKey: { number, disabled, letters } }: keyProp) => (
   <ConverterContext.Consumer>
     {({ addKeyToUserInput }) => (
@@ -42,6 +45,9 @@ type rowProps = {
   isLast: boolean,
 };
 
+/**
+ * Row of phone keys
+ */
 const PhoneRow = ({ keys, isLast }: rowProps) => (
   <div className={classnames(['d-flex justify-content-between', { [styles.phoneRowLast]: isLast }])}>
     {keys.map(key => (
@@ -53,6 +59,10 @@ const PhoneRow = ({ keys, isLast }: rowProps) => (
 /* ******************************** */
 /* ********** COMPONENT *********** */
 /* ******************************** */
+
+/**
+ * Button input in the style of a mobile phone
+ */
 const PhoneKeys = () => (
   <div className="my-2">
     <PhoneRow keys={keyData[0]} />

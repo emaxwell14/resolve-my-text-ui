@@ -97,6 +97,11 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     hot: true,
+    proxy: {
+      '/': {
+        target: 'http://localhost:8080/',
+      },
+    },
   },
   output: {
     filename: '[name].bundle.js',

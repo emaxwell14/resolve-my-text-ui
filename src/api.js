@@ -5,14 +5,14 @@
 /* ******************************** */
 /* *********** PRIVATE ************ */
 /* ******************************** */
-const API_URL = 'http://localhost:8080/computeLetters';
+const API_ENDPOINT = '/computeLetters';
 
 /* ******************************** */
 /* *********** PUBLIC* ************ */
 /* ******************************** */
 
 const computeLetters = number =>
-  fetch(API_URL, {
+  fetch(API_ENDPOINT, {
     headers: {
       'Content-Type': 'application/json',
     },

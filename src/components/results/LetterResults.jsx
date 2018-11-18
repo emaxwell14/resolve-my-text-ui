@@ -24,6 +24,9 @@ const formatResults = results =>
 /* ******************************** */
 /* ********** COMPONENT *********** */
 /* ******************************** */
+/**
+ * Results display
+ */
 const LetterResults = () => (
   <ConverterContext.Consumer>
     {({ results, resultsPending }) => (
@@ -34,9 +37,7 @@ const LetterResults = () => (
             <div className="d-flex flex-wrap">{formatResults(results)}</div>
           </div>
         )}
-        {resultsPending && (
-          <Loader />
-        )}
+        {resultsPending && <Loader />}
       </Fragment>
     )}
   </ConverterContext.Consumer>

@@ -18,6 +18,9 @@ type Props = {
   children: React.Node,
 };
 
+/**
+ * Wrapper for context provider. Contains the state of the app
+ */
 class ConverterProvider extends Component<Props, {}> {
   constructor(props: Props) {
     super(props);
@@ -32,17 +35,26 @@ class ConverterProvider extends Component<Props, {}> {
     };
   }
 
+  /**
+   * Set user input. Client side validation handled here
+   */
   setUserInput = (userInput: string) => {
     const userInputError = isValidNumber(userInput);
     this.setState({ userInput, userInputError });
   };
 
+  /**
+   * Add an individual key stroke to the input
+   */
   addKeyToUserInput = (pressedKey: string) => {
     const { userInput } = this.state;
     const updatedInput = userInput.concat(pressedKey);
     this.setState({ userInput: updatedInput });
   };
 
+  /**
+   * Query the api and store results
+   */
   queryResults = () => {
     const { userInput } = this.state;
     computeLetters(userInput)
