@@ -1,13 +1,7 @@
 @import '../main';
 
-.results {
-  .result-header {
-    margin-bottom: 0;
-  }
-
-  .result {
-    flex: 0 0 20%;
-  }
+.result {
+  flex: 0 0 20%;
 }
 
 .infinite-scroll {

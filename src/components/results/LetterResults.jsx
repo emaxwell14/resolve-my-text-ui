@@ -34,8 +34,8 @@ const LetterResults = () => (
     {({ results, resultsPending, clearResults }) => (
       <Fragment>
         {results.length > 0 && (
-          <div className={classnames(['p-2', styles.borderShadow, styles.results])}>
-            <div className={classnames(['d-flex justify-content-between', styles.resultHeader])}>
+          <div className={classnames(['p-2', styles.borderShadow])}>
+            <div className="d-flex justify-content-between mb-0">
               <h4>Results</h4>
               <button type="button" className="btn btn-link p-0" onClick={clearResults}>
                 Close Results

@@ -8,7 +8,6 @@ import styles from './styles.scss';
 /* ******************************** */
 /* *********** PRIVATE ************ */
 /* ******************************** */
-const getNewValues = (values, index, offset) => values.slice(index, offset);
 
 /* ******************************** */
 /* ********** COMPONENT *********** */
@@ -20,13 +19,16 @@ type Props = {
 };
 
 type State = {
-  currentOffset: number,
   displayedValues: Array<Node>,
 };
 
+/**
+ * Infinite scroll to improve page responsiveness for a large list of data
+ * An initial set of values is loaded and formatted.
+ * When the bottom of the scrollbar is reached, additional values are loaded.
+ */
 class InfiniteScroll extends Component<Props, State> {
   state = {
-    currentOffset: 0,
     displayedValues: [],
   };
 
@@ -34,6 +36,9 @@ class InfiniteScroll extends Component<Props, State> {
     this.updateCurrentValues();
   }
 
+  /**
+   * On scroll checking if the bottom of the scrollable area has been reached
+   */
   handleScroll = ({ target: { scrollHeight, scrollTop, clientHeight } }) => {
     const bottom = Math.round(scrollHeight - scrollTop) === clientHeight;
     if (bottom) {
@@ -41,19 +46,28 @@ class InfiniteScroll extends Component<Props, State> {
     }
   };
 
+  /**
+   * Gets the next set of values to be loaded in the infinite scroll.
+   * Formats them and appends them to the currently dispayed values.
+   */
   updateCurrentValues = () => {
     const { values, count, formatter } = this.props;
-    const { currentOffset, displayedValues } = this.state;
+    const { displayedValues } = this.state;
+
+    const currentOffset = displayedValues.length;
 
     if (values.length > currentOffset) {
       const newOffset = currentOffset + count;
-      const newValues = getNewValues(values, currentOffset, newOffset);
+      const newValues = values.slice(currentOffset, newOffset);
       const newDisplayValues = displayedValues.concat(formatter(newValues));
 
-      this.setState({ currentOffset: newOffset, displayedValues: newDisplayValues });
+      this.setState({ displayedValues: newDisplayValues });
     }
   };
 
+  /**
+   * Setting a dom listener on load of the component
+   */
   scrollRef = node => {
     if (node) {
       node.addEventListener('scroll', this.handleScroll);
