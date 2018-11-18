@@ -26,7 +26,7 @@ const PhoneKey = ({ buttonKey: { number, disabled, letters } }: keyProp) => (
     {({ addKeyToUserInput }) => (
       <button
         type="button"
-        className={classnames([styles.phoneKey, 'btn btn-secondary w-100 m-1'])}
+        className={classnames(['btn btn-secondary w-100 m-1', styles.phoneKey])}
         disabled={disabled}
         onClick={() => addKeyToUserInput(number)}
       >
@@ -54,12 +54,12 @@ const PhoneRow = ({ keys, isLast }: rowProps) => (
 /* ********** COMPONENT *********** */
 /* ******************************** */
 const PhoneKeys = () => (
-  <Fragment>
+  <div className="my-2">
     <PhoneRow keys={keyData[0]} />
     <PhoneRow keys={keyData[1]} />
     <PhoneRow keys={keyData[2]} />
     <PhoneRow keys={keyData[3]} isLast />
-  </Fragment>
+  </div>
 );
 
 /* ******************************** */

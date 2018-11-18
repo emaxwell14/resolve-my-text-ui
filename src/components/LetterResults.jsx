@@ -1,21 +1,36 @@
 /* ******************************** */
 /* *********** IMPORTS ************ */
 /* ******************************** */
-import React from 'react';
+import React, { Fragment } from 'react';
+import classnames from 'classnames';
+import ConverterContext from '../context/ConverterContext';
+import styles from './styles.scss';
 
 /* ******************************** */
 /* *********** PRIVATE ************ */
 /* ******************************** */
-
+const formatResults = results =>
+  results.map(result => (
+    <div key={result} className={classnames(['p-1', styles.result])}>
+      {result}
+    </div>
+  ));
 /* ******************************** */
 /* ********** COMPONENT *********** */
 /* ******************************** */
-type Props = { results: Array<string> };
-
-const LetterResults = ({ results }: Props) => (
-  <div>
-    <textarea className="form-control" rows="10" disabled value={results} />
-  </div>
+const LetterResults = () => (
+  <ConverterContext.Consumer>
+    {({ results }) => (
+      <Fragment>
+        {results.length > 0 && (
+          <div className={classnames(['p-2', styles.borderShadow, styles.results])}>
+            <h4>Results</h4>
+            <div className="d-flex flex-wrap">{formatResults(results)}</div>
+          </div>
+        )}
+      </Fragment>
+    )}
+  </ConverterContext.Consumer>
 );
 
 /* ******************************** */

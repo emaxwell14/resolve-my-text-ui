@@ -41,7 +41,9 @@ class ConverterProvider extends Component<Props, {}> {
 
   queryResults = () => {
     const { userInput } = this.state;
-    computeLetters(userInput).then(results => this.setState({ results }));
+    computeLetters(userInput)
+      .then(results => this.setState({ results }))
+      .catch(() => this.setState({ results: [] }));
   };
 
   render() {

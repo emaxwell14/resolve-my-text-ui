@@ -2,8 +2,10 @@
 /* *********** IMPORTS ************ */
 /* ******************************** */
 import React from 'react';
+import classnames from 'classnames';
 import PhoneKeys from './PhoneKeys';
 import ConverterContext from '../context/ConverterContext';
+import styles from './styles.scss';
 
 /* ******************************** */
 /* *********** PRIVATE ************ */
@@ -15,8 +17,8 @@ import ConverterContext from '../context/ConverterContext';
 const UserInputContainer = () => (
   <ConverterContext.Consumer>
     {({ userInput, setUserInput, queryResults }) => (
-      <div className="d-flex flex-column align-items-center">
-        <div className="w-50">
+      <div className="d-flex flex-column align-items-center mb-3">
+        <div className={classnames([styles.borderShadow, 'w-50 p-2'])}>
           <input
             className="form-control"
             type="text"
