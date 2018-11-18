@@ -5,6 +5,7 @@ import React, { Fragment } from 'react';
 import classnames from 'classnames';
 import keyData from '../keyData.json';
 import styles from './styles.scss';
+import ConverterContext from '../context/ConverterContext';
 
 /* ******************************** */
 /* *********** PRIVATE ************ */
@@ -21,10 +22,19 @@ type keyProp = {
 };
 
 const PhoneKey = ({ buttonKey: { number, disabled, letters } }: keyProp) => (
-  <button type="button" className={classnames([styles.phoneKey, 'btn btn-secondary w-100 m-1'])} disabled={disabled}>
-    {letters && <div>{letters}</div>}
-    <div>{number}</div>
-  </button>
+  <ConverterContext.Consumer>
+    {({ addKeyToUserInput }) => (
+      <button
+        type="button"
+        className={classnames([styles.phoneKey, 'btn btn-secondary w-100 m-1'])}
+        disabled={disabled}
+        onClick={() => addKeyToUserInput(number)}
+      >
+        {letters && <div>{letters}</div>}
+        <div>{number}</div>
+      </button>
+    )}
+  </ConverterContext.Consumer>
 );
 
 type rowProps = {

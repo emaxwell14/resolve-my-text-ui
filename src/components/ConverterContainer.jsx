@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 import UserInputContainer from './UserInputContainer';
 import LetterResults from './LetterResults';
 import computeLetters from '../api';
-import styles from './styles.scss';
+import ConverterProvider from '../context/ConverterProvider';
+import ConverterContext from '../context/ConverterContext';
 
 /* ******************************** */
 /* *********** PRIVATE ************ */
@@ -22,27 +23,24 @@ type State = {
 };
 
 class ConverterContainer extends Component<Props, State> {
-  state = {
-    userInput: '',
-    results: [],
-  };
-
-  setUserInput = (userInput: string) => {
-    this.setState({ userInput });
-  };
-
+  // TODO how to access Context here
   getResults = () => {
     const { userInput } = this.state;
-    computeLetters(userInput).then(results => this.setState({ results }));
+    computeLetters(userInput).then(results => console.log({ results }));
   };
 
   render() {
-    const { userInput, results } = this.state;
     return (
-      <div className="container">
-        <UserInputContainer input={userInput} setUserInput={this.setUserInput} getResults={this.getResults} />
-        <LetterResults results={results} />
-      </div>
+      <ConverterProvider>
+        <ConverterContext.Consumer>
+          {({ results }) => (
+            <div className="container">
+              <UserInputContainer getResults={this.getResults} />
+              <LetterResults results={results} />
+            </div>
+          )}
+        </ConverterContext.Consumer>
+      </ConverterProvider>
     );
   }
 }
