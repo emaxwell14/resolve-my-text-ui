@@ -41,7 +41,7 @@ const LetterResults = () => (
                 Close Results
               </button>
             </div>
-            <InfiniteScroll values={results} formatter={formatResults} count={50} />
+            <InfiniteScroll values={results} formatter={formatResults} />
           </div>
         )}
         {resultsPending && <Loader />}

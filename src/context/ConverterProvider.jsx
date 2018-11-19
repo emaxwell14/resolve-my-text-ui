@@ -63,7 +63,9 @@ class ConverterProvider extends Component<Props, {}> {
     const { userInput } = this.state;
     computeLetters(userInput)
       .then(results => this.setState({ results, resultsPending: false }))
-      .catch(() => this.setState({ results: [], resultsPending: false }));
+      .catch(({ message: error }) => {
+        this.setState({ results: [], resultsPending: false, userInputValidation: { error } });
+      });
     this.setState({ results: [], resultsPending: true });
   };
 

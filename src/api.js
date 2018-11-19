@@ -20,7 +20,12 @@ const computeLetters = number =>
     body: JSON.stringify({ number }),
   })
     .then(res => res.json())
-    .then(json => json.data);
+    .then(({ error, data }) => {
+      if (error) {
+        throw Error(`Server Error: ${error}`);
+      }
+      return data;
+    });
 
 /* ******************************** */
 /* *********** EXPORTS ************ */

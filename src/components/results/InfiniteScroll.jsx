@@ -14,7 +14,7 @@ import styles from './styles.scss';
 /* ******************************** */
 type Props = {
   values: Array<string>,
-  count: number,
+  count?: number,
   formatter: (Array<string>) => Array<Node>,
 };
 
@@ -30,6 +30,10 @@ type State = {
 class InfiniteScroll extends Component<Props, State> {
   state = {
     displayedValues: [],
+  };
+
+  static defaultProps = {
+    count: 50,
   };
 
   componentDidMount() {
