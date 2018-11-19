@@ -22,7 +22,7 @@ const computeLetters = number =>
     .then(res => res.json())
     .then(({ error, data }) => {
       if (error) {
-        throw Error(error);
+        throw Error(`Error: ${error}`);
       }
       return data;
     });
