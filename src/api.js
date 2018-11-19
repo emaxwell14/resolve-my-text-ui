@@ -19,8 +19,15 @@ const computeLetters = number =>
     method: 'POST',
     body: JSON.stringify({ number }),
   })
-    .then(res => res.json())
+    .then(res => {
+      // Connection error
+      if (res.status === 504) {
+        throw Error('Error: Could not connect to API.');
+      }
+      return res.json();
+    })
     .then(({ error, data }) => {
+      // Validation error
       if (error) {
         throw Error(`Error: ${error}`);
       }
